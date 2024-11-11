@@ -22,11 +22,11 @@ public class AirplaneController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-            // Yaw 회전은 수평 입력에 따라 증가 또는 감소하여 방향을 좌우로 회전.
-            yaw += horizontalInput * yawAmount * Time.deltaTime;
+        // Yaw 회전은 수평 입력에 따라 증가 또는 감소하여 방향을 좌우로 회전.
+        yaw += horizontalInput * yawAmount * Time.deltaTime;
 
-            // Pitch(상하 기울기) 0~20도
-            float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
+        // Pitch(상하 기울기) 0~20도
+        float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
 
         // Roll(좌우 기울기) 0~30도까지
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
