@@ -7,13 +7,13 @@ public class BulletMovement : MonoBehaviour
 {
     public float bulletSpeed = 20.0f;
     public float maxDistance = 100f; // 최대 이동
-    public float maxTime = 10;
+    public float destructionTime;
 
     void Start()
     {
-        maxTime = maxDistance / bulletSpeed;
+        destructionTime = maxDistance / bulletSpeed;
 
-        Destroy(gameObject, maxTime);
+        Destroy(gameObject, destructionTime);
     }
 
     private void Update()
