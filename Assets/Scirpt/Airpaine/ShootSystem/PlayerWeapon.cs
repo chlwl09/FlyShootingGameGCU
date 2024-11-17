@@ -8,12 +8,16 @@ public class PlayerWeapon : BaseWeapon
 
     private void Start()
     {
-        fireRate = 1f; // 예시로 발사 속도를 설정
+        fireRate = 10f; // 발사 속도를 설정
     }
 
     private void Update()
     {
-        Fire();
+        // 스페이스바를 눌렀을 때 Fire() 메서드 호출
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
     }
 
     /// <summary>
@@ -24,8 +28,14 @@ public class PlayerWeapon : BaseWeapon
     {
         if (Time.time >= lastFireTime + (1f / fireRate))
         {
+            if (PoolManager.Instance == null)
+            {
+                Debug.LogError("PoolManager.Instance가 null입니다. PoolManager가 씬에 존재하는지 확인.");
+                return;
+            }
+
             Debug.Log("탄환 생성");
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            PoolManager.Instance.SpawnFromPool(transform.position, transform.rotation);
             lastFireTime = Time.time;
         }
     }

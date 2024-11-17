@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAirplane : AireplaneBase
+public class EnemyAirplane : AirplaneBase
 {
     protected override void OnDeath()
     {
